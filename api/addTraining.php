@@ -7,9 +7,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $exercicio = $_POST['exercicio'];
     $serie = $_POST['serie'];
     $modelo_treino = $_POST['modelo_treino'];
-    $query = $db->prepare("INSERT INTO treino_intermediario (dia_semana, exercicio, serie, nome, nome_id)
+    $query = $db->prepare("INSERT INTO $modelo_treino (dia_semana, exercicio, serie, nome, nome_id)
     VALUES (:dia_semana, :exercicio, :serie, :nome, :nome_id)");
-       
+      
 
     $query->bindValue(':dia_semana', $dia_semana);
     $query->bindValue(':exercicio', $exercicio);
