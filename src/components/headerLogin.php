@@ -1,18 +1,4 @@
-<?php
-if (!isset($_SESSION['email'])) {
-   
-} else {
-    if (isset($_SESSION['usuario'])) {
-        $usuario = $_SESSION['usuario'][0];
 
-        if ($usuario['tipo_user'] == "personal") {
-           // header('Location: /index.php');
-
-        }
-        ;
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,26 +48,6 @@ if (!isset($_SESSION['email'])) {
           </div>
         </div>
       </div>
-      <?php
-      
-      if (isset($_SESSION['usuario'])) {
-        if (isset($usuario)) {
-            $teste = substr($usuario['nome'], 0, 1);
-            echo '<div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">';
-            echo '<p class="text-bold text-white text-1xl ' . ($usuario['tipo_user'] == "aluno" ? 'aluno-style' : 'admin-style') . '">';
-            echo ($usuario['tipo_user'] == "aluno") ? 'Aluno: ' : 'Administrador: ';
-            echo $usuario['nome'];
-            echo ' ';
-            echo '<span class="inline-flex items-center justify-center h-[2.200rem] w-[2.200rem] rounded-full bg-orange-600">
-                    <span class="font-medium text-white leading-none">' . $teste . '</span>
-                  </span>';
-            echo '</p>';
-            echo '</div>';
-        }
-    }
-    
-        
-      ?>
     </div>
   </div>
 
@@ -98,6 +64,7 @@ if (!isset($_SESSION['email'])) {
     </div>
   </div>
 </nav>
+
 </body>
 
 </html>

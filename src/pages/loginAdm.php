@@ -9,12 +9,15 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login como administrador</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" sizes="16x16" href="https://travelpedia.com.br/wp-content/uploads/2018/03/academia-icon.png">
+
     </script>
 </head>
 
 <body>
+    <?php include("../components/headerLogin.php") ?>
     <section
         class="bg-gray-50 dark:bg-gray-900 h-screen bg-[url('https://www.recreiodajuventude.com.br/userfiles/conteudos/academia-sede-juventude2-1.jpg')] bg-no-repeat bg-center bg-cover">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -80,6 +83,7 @@ session_start();
             </div>
         </div>
     </section>
+    
 </body>
 
 </html>

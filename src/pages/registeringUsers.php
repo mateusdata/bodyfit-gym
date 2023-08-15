@@ -1,5 +1,4 @@
 <?php
-session_start();
   include("../../api/databases/database.php");
 if (!isset($_SESSION['usuario'])) {
     echo "<script>alert('Você precisa fazer login para acessar esta página');</script>";
@@ -17,11 +16,13 @@ if (!isset($_SESSION['usuario'])) {
     <title>Cadastro de Usuários</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" sizes="16x16" href="https://travelpedia.com.br/wp-content/uploads/2018/03/academia-icon.png">
+
 
 </head>
 
-<body class="bg-gray-100">
-    <div class="container mx-auto p-8 w-[50%]">
+<body>
+    <div class="container mx-auto p-8 sm:w-[100%] w-74 rounded-2xl border">
         <h1 class="text-2xl font-semibold mb-4">Cadastro de Usuários</h1>
         <form action="../../api/registerStudent.php" method="POST" class="bg-white p-4 rounded shadow-md">
             <div class="mb-4">
@@ -56,6 +57,7 @@ if (!isset($_SESSION['usuario'])) {
             </div>
             <button class="bg-blue-600 rounded-lg shadow-lg flex items-center justify-center p-2 mt-3" >Cadastro Aluno</button>
         </form>
+        
     </div>
 </body>
 

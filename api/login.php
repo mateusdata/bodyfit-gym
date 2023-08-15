@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($row)) {
 
         $_SESSION['email'] = $email;
-        $tipo_user == "adm" ? header('Location: ../index.php') : header('Location: ../src/pages/ListTraining.php');
+        $tipo_user == "adm" ? header('Location: ../src/pages/admin.php') : header('Location: ../src/pages/ListTraining.php');
 
         $row = json_encode($row);
         header("Content-Type: application/json");
@@ -51,7 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['login_erro'] = 'Usuário ou senha incorretos. Tente novamente.';
     }
 }
-// Redirecionar para o formulário de login
 header('Location: ../src/pages/loginForm.php');
 exit();
 ?>

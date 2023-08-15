@@ -1,11 +1,17 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Serviçoes</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" sizes="16x16" href="https://travelpedia.com.br/wp-content/uploads/2018/03/academia-icon.png">
+
 </head>
 
 <body>
@@ -17,8 +23,7 @@
                     BodyFit: Transformando Treinos Personalizados em Resultados de Sucesso </h2>
                 <p class="mt-3 text-gray-800 dark:text-gray-400">
                     Descubra a simplicidade e eficiência do BodyFit. Nosso sistema capacita administradores a criar e
-                    atribuir modelos de treinos personalizados para alunos, enquanto oferece a flexibilidade de
-                    cadastrar múltiplas academias. Uma solução moderna para uma gestão inteligente de treinamento
+                    atribuir modelos de treinos personalizados para alunos. Uma solução moderna para uma gestão inteligente de treinamento
                 </p>
                 <a href="../pages/contact.php"
                     class="mt-5 inline-flex items-center gap-x-2 font-medium text-blue-600 dark:text-blue-500">
@@ -156,7 +161,7 @@
                         </div>
                     </div>
                     <p class="text-gray-600 dark:text-gray-400">Plataforma unificada para armazenar todas as informações
-                        de treino e acompanhament</p>
+                        de treino e acompanhamento</p>
                 </div>
 
                 <div class="w-full h-full bg-white shadow-lg rounded-lg p-5 dark:bg-slate-900">
