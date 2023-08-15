@@ -20,7 +20,7 @@ session_start();
   <div class="mt-5 lg:mt-16 grid lg:grid-cols-3 gap-8 lg:gap-12">
     <div class="lg:col-span-1">
       <h2 class="font-bold text-2xl md:text-3xl text-gray-800 dark:text-gray-200">
-      BodyFit Sistema de ficha de academia
+      BodyFit Sistema de ficha da academia
       </h2>
       <p class="mt-2 md:mt-4 text-gray-500">
       O sistema BodyFit foi meticulosamente criado para revolucionar a forma como as academias gerenciam fichas de treino, deixando para trás o papel e abraçando a eficiência digital
