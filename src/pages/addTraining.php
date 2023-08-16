@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Formulário de Treino</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
+
 <body class="bg-gray-100">
     <div class="container mx-auto p-6">
         <h1 class="text-2xl font-bold mb-4">Formulário de Treino</h1>
@@ -28,7 +30,7 @@
                 <label class="block text-gray-700 font-bold mb-2" for="serie">Série:</label>
                 <input type="text" name="serie" class="w-full border rounded p-2">
             </div>
-            
+
             <div class="mb-4">
                 <label class="block text-gray-700 font-bold mb-2" for="modelo_treino">Modelo de Treino:</label>
                 <select name="modelo_treino" class="w-full border rounded p-2">
@@ -39,6 +41,15 @@
             </div>
             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Inserir</button>
         </form>
+
+        <?php
+        if (isset($_GET['success']) && $_GET['success'] == 1) {
+            echo "<p class='text-green-500'>Inserção bem-sucedida</p>";
+        } elseif (isset($_GET['error']) && $_GET['error'] == 1) {
+            echo "<p class='text-red-500'>Erro ao inserir registro</p>";
+        }
+        ?>
     </div>
 </body>
+
 </html>

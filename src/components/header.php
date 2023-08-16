@@ -19,6 +19,33 @@ if (!isset($_SESSION['email'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title></title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    var dropdownVisible = false; 
+
+    function toggleDropdown() {
+        var dropdown = document.getElementById('myDropdown');
+        if (dropdownVisible) {
+            dropdown.classList.add('hidden'); 
+        } else {
+            dropdown.classList.remove('hidden'); 
+        }
+        dropdownVisible = !dropdownVisible; 
+    }
+
+    function toggleMenu() {
+      alert("teste")
+        var dropdown = document.getElementById('menu');
+        if (dropdownVisible) {
+            dropdown.classList.add('hidden'); 
+        } else {
+            dropdown.classList.remove('hidden'); 
+        }
+        dropdownVisible = !dropdownVisible; 
+    }
+</script>
+
+
+
 
 </head>
 
@@ -26,7 +53,7 @@ if (!isset($_SESSION['email'])) {
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-        <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+        <button  onclick="toggleMenu()" type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
           <span class="absolute -inset-0.5"></span>
           <span class="sr-only">Abrir menu</span>
 
@@ -49,18 +76,17 @@ if (!isset($_SESSION['email'])) {
 
             if (isset($_SESSION['usuario'])) {
               if ($usuario['tipo_user'] == "personal") {
-                echo '<a href="/index.php" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Voce é personal</a>';
-                echo '<a href="../../src/pages/about.php" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Sobre</a>';
-                echo '<a href="../../src/pages/services.php" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Serviços</a>';
+                echo '<a href="/index.php" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Pagina inicial</a>';
+                echo '<a href="../../src/pages/registeringTraining.php" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Adição de treinos</a>';
+                echo '<a href="../../src/pages/registeringTraining.php" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Gerenciar ususarios</a>';
                 echo '<a href="../../src/pages/contact.php" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contato</a>';
               } else if ($usuario['tipo_user'] == "aluno") {
-                echo '<a href="/index.php" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">voce é aluno</a>';
+                echo '<a href="/index.php" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Pagina inicial</a>';
                 echo '<a href="../../src/pages/listTraining.php" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Ficha de treino</a>';
                 echo '<a href="../../src/pages/services.php" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Serviços</a>';
                 echo '<a href="../../src/pages/myData.php" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Meus dados</a>';
               }
-            }
-            else{
+            } else {
               echo '<a href="/index.php" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Pagina inicial</a>';
               echo '<a href="../../src/pages/about.php" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Sobre</a>';
               echo '<a href="../../src/pages/services.php" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Serviços</a>';
@@ -85,32 +111,54 @@ if (!isset($_SESSION['email'])) {
           echo ($usuario['tipo_user'] == "aluno") ? 'Aluno: ' : 'Administrador: ';
           echo $usuario['nome'];
           echo ' ';
-          echo '<span class=" inline-flex items-center justify-center h-[2.200rem] w-[2.200rem] rounded-full bg-orange-600">
-                    <span class=" hidden sm:block font-medium text-white leading-none">' . $teste . '</span>
+          echo '<span onclick="toggleDropdown()"  class=" inline-flex items-center justify-center h-[2.200rem] w-[2.200rem] rounded-full bg-orange-600">
+                    <button class=" hidden sm:block font-medium text-white leading-none">' . $teste . '</button>
 
-                    <div class="hidden sm:block absolute right-0 top-12 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                    <div id="myDropdown"  class="hidden absolute right-0 top-12 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                     <!-- Active: "bg-gray-100", Not Active: "" -->
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+                    <a href="/index.php" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Home</a>
+                    <a href="/src/pages/myData.php" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Sua conta</a>
+                    <a  href="../../src/pages/logout.php"" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sair</a>
                   </div>
                   </span>';
           echo '</p>';
           echo '</div>';
+
+          
         }
+      } else {
+        echo '<a  href="/src/pages/loginForm.php" class="text-white bg-gradient-to-r tt-2 from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg mt-2 shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-1.5 text-center mr-2 mb-1">Entrar</a>
+
+      ';
       }
-
-
       ?>
+     
     </div>
   </div>
 
-  <div class="sm:hidden" id="mobile-menu">
+  <div class="sm:hidden" id="menu">
     <div class="space-y-1 px-2 pb-4 pt-2">
-      <a href="/index.php" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Pagina inicial</a>
-      <a href="../../src/pages/about.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Sobre</a>
-      <a href="../../src/pages/services.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Serviços</a>
-      <a href="../../src/pages/contact.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contato</a>
+      <?php
+
+      if (isset($_SESSION['usuario'])) {
+        if ($usuario['tipo_user'] == "personal") {
+          echo '<a href="/index.php" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium">Pagina inicial</a>';
+          echo '<a href="../../src/pages/registeringTraining.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Adição de treinos</a>';
+          echo '<a href="../../src/src/pages/registeringTraining.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Gerenciar ususarios</a>';
+          echo '<a href="../../src/pages/contact.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contato</a>';
+        } else if ($usuario['tipo_user'] == "aluno") {
+          echo '<a href="/index.php" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium">Pagina inicial</a>';
+          echo '<a href="../../src/pages/listTraining.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Ficha de treino</a>';
+          echo '<a href="../../src/pages/services.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Serviços</a>';
+          echo '<a href="../../src/pages/myData.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Meus dados</a>';
+        }
+      } else {
+        echo '<a href="/index.php" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium">Pagina inicial</a>';
+        echo '<a href="../../src/pages/about.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Sobre</a>';
+        echo '<a href="../../src/pages/services.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Serviços</a>';
+        echo '<a href="../../src/pages/contact.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contato</a>';
+      }
+      ?>
     </div>
   </div>
 </nav>

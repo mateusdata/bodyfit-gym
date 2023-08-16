@@ -1,5 +1,5 @@
 <?php
-  include("../../api/databases/database.php");
+include("../../api/databases/database.php");
 if (!isset($_SESSION['usuario'])) {
     echo "<script>alert('Você precisa fazer login para acessar esta página');</script>";
     header('Location: ./src/pages/loginForm.php');
@@ -22,43 +22,52 @@ if (!isset($_SESSION['usuario'])) {
 </head>
 
 <body>
-    <div class="container mx-auto p-8 sm:w-[100%] w-74 rounded-2xl border">
-        <h1 class="text-2xl font-semibold mb-4">Cadastro de Usuários</h1>
-        <form action="../../api/registerStudent.php" method="POST" class="bg-white p-4 rounded shadow-md">
-            <div class="mb-4">
-                <label for="nome" class="block font-medium text-gray-700">Nome</label>
-                <input type="text" id="nome" name="nome" class="mt-1 p-2 border rounded w-full" required>
-            </div>
-            <div class="mb-4">
-                <label for="email" class="block font-medium text-gray-700">Email</label>
-                <input type="email" id="email" name="email" class="mt-1 p-2 border rounded w-full" required>
-            </div>
-            <div class="mb-4">
-                <label for="senha" class="block font-medium text-gray-700">Senha</label>
-                <input type="text" id="senha" name="senha" class="mt-1 p-2 border rounded w-full" required>
-            </div>
-            <div class="mb-4">
-                <label for="objetivo" class="block font-medium text-gray-700">objetivo</label>
-                <input type="text" id="objetivo" name="objetivo" class="mt-1 p-2 border rounded w-full" required>
-            </div>
-            <div>
-                <label for="tipo_treino" class="block font-medium text-gray-700">Tipo de Treino</label>
-                <select id="tipo_treino" name="tipo_treino" class="mt-1 p-2 border rounded w-full" required>
-                    <?php
-                    $resultado = $db->prepare("SELECT * FROM bodyfit.tipo_de_treino");
-                    $resultado->execute();
-                    $row = $resultado->fetchAll(PDO::FETCH_ASSOC);
+    <section class="bg-white dark:bg-gray-900">
+        <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+            <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Cadastro de Usuários</h2>
+            <form action="../../api/registerStudent.php" method="POST">
+                <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                    <div class="sm:col-span-2">
+                        <label for="nome" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome</label>
+                        <input type="text" name="nome" id="nome" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
+                    </div>
+                    <div class="w-full">
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                        <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Product brand" required="">
+                    </div>
+                    <div class="w-full">
+                        <label for="senha" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">senha</label>
+                        <input type="text" name="senha" id="senha" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$2999" required="">
+                    </div>
+                    <div class="w-full">
+                        <label for="objetivo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">objetivo</label>
+                        <input type="text" name="objetivo" id="objetivo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$2999" required="">
+                    </div>
+                    <div>
+                        <label for="tipo_treino" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">tipo_treino</label>
+                        <select id="tipo_treino" name="tipo_treino" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <?php
+                            $resultado = $db->prepare("SELECT * FROM bodyfit.tipo_de_treino");
+                            $resultado->execute();
+                            $row = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
-                    foreach ($row as $linha) {
-                        echo "<option value=\"{$linha['nome']}\">{$linha['nome']}</option>";
-                    }
-                    ?>
-                </select>
-            </div>
-            <button class="bg-blue-600 rounded-lg shadow-lg flex items-center justify-center p-2 mt-3" >Cadastro Aluno</button>
-        </form>
-        
-    </div>
+                            foreach ($row as $linha) {
+                                echo "<option value=\"{$linha['nome']}\">{$linha['nome']}</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+
+                </div>
+                <button class="inline-flex items-center bg-purple-600 px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-black bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                    Cadastro Aluno
+                </button>
+            </form>
+
+
+
+        </div>
+    </section>
 </body>
 
 </html>

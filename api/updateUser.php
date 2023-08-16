@@ -1,24 +1,21 @@
 <?php
 session_start();
-
-// Verificar se o formulário foi submetido
+include("./databases/database.php");
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $usuario = $_POST['usuario'];
-    $senha = $_POST['senha'];
+    $id = $_POST['id'];
+    $novoValor = $_POST['novoValor'];
+    print_r($id.$novoValor);
+    $query = $db->prepare("UPDATE alunos SET tipo_treino = :novoValor WHERE id = :id");
+    $query->bindValue(':novoValor', $novoValor);
+    $query->bindValue(':id', $id);
+    $result = $query->execute();
 
-    // Verificar as credenciais aqui (exemplo: usuário=admin, senha=123)
-    if ($usuario === 'mateus' && $senha === '123') {
-        // Autenticação bem-sucedida
-        $_SESSION['usuario'] = $usuario;
-        header('Location: ../index.php');
-        exit();
+    if ($result) {
+        echo "Atualização bem-sucedida";
     } else {
-        // Credenciais incorretas
-        $_SESSION['login_erro'] = 'Usuário ou senha incorretos. Tente novamente.';
+        echo "Erro ao atualizar registro: " . $query->errorInfo()[2];
     }
-}
 
-// Redirecionar para o formulário de login
-header('Location: ../src/pages/loginForm.php');
-exit();
+    exit();
+}
 ?>

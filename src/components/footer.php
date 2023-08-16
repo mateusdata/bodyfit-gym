@@ -9,7 +9,7 @@
 
 <body>
     <footer>
-        <div class="   py-10 px-4 sm:px-6 lg:px-8 mx-auto border 2xl:mb-6 bg-gray-800 sm:w-full">
+        <div class="py-6 sm:px-6 lg:px-8 mx-auto borde bg-gray-100 sm:w-full">
             <div class="grid grid-cols-1 md:grid-cols-3 items-center gap-5 text-center">
                 <div>
                     <a class="flex-none text-xl font-semibold text-black dark:text-white" href="#"

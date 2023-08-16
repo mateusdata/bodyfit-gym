@@ -2,7 +2,7 @@
 session_start();
 if (!isset($_SESSION['email'])) {
     echo "<script>alert('Você precisa fazer login para acessar esta página');</script>";
-    header('Location: ./src/pages/loginForm.php');
+    header('Location: ./logout.php');
     exit();
 } else {
     if (isset($_SESSION['usuario'])) {
@@ -33,8 +33,13 @@ if (!isset($_SESSION['email'])) {
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
             <?php echo "<h2 class=\"text-2xl font-bold md:text-4xl md:leading-tight dark:text-white\">Bem-vindo " . ucfirst($usuario['nome']) . "</h2>"; ?>
-            <?php echo "<p class=\"mt-1  font-bold dark:text-gray-800 text-md\">Tipo de treino " . ucfirst($usuario['tipo_treino']) . "</p>"; ?>
-  
+            <?php 
+            include("../../api/databases/database.php");
+            $query = $db->prepare("SELECT tipo_treino FROM alunos WHERE id = :id");
+            $query->bindValue(':id', $usuario['id']);
+            $result = $query->execute();
+            $row = $query->fetch(PDO::FETCH_ASSOC); 
+            echo "<p class=\"mt-1  font-bold dark:text-gray-800 text-md\">Tipo de treino " .$row['tipo_treino']. "</p>"; ?>
             <p class="mt-1 text-gray-600 dark:text-gray-400">Seu treino semana do Sistema bodyfit</p>
         </div>
 
@@ -44,7 +49,7 @@ if (!isset($_SESSION['email'])) {
                 <?php
                 include("../../api/databases/database.php");
 
-                $query = "SELECT * FROM $usuario[tipo_treino]";
+                $query = "SELECT * FROM $row[tipo_treino]";
                 $resultado = $db->prepare($query);
 
                 $resultado->execute();
