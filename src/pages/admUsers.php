@@ -121,11 +121,8 @@ if (!isset($_SESSION['email'])) {
                                             </svg>
                                             Criar usuario
                                         </a>
-                                        <dialog id="myDialog" class="rounded-2xl shadow-2xl w-[80%] h-[80%]">
-                                            <?php include("./registeringUsers.php") ?>
-                                            <div class="p-5 shadow-md rounded-md w-full flex justify-end">
-                                                <button class="p-5 shadow-md rounded-md bg-red-500 w-50 h-4 flex  items-center  justify-center" id="closeDialog">Fechar</button>
-                                            </div>
+                                        <dialog id="myDialog" class="rounded-2xl shadow-2xl w-[80%] mt-16 bg-gray-800">
+                                            <?php include("./createStudent.php") ?>
                                         </dialog>
                                         <script>
                                             const myDialog = document.getElementById('myDialog');
@@ -182,7 +179,7 @@ if (!isset($_SESSION['email'])) {
 
                                 <?php
                                 include("../../api/databases/database.php");
-                                $query = $db->prepare("SELECT * FROM bodyfit.alunos");
+                                $query = $db->prepare("SELECT * FROM alunos");
                                 $query->execute();
                                 $row = $query->fetchAll(PDO::FETCH_ASSOC);
                                 // print_r($row);

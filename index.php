@@ -21,4 +21,4 @@ session_start();
     <?php include("./src/components/footer.php") ?>
 </body>
 
-</html>
+</html> 

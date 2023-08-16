@@ -77,8 +77,8 @@ if (!isset($_SESSION['email'])) {
             if (isset($_SESSION['usuario'])) {
               if ($usuario['tipo_user'] == "personal") {
                 echo '<a href="/index.php" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Pagina inicial</a>';
-                echo '<a href="../../src/pages/registeringTraining.php" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Adição de treinos</a>';
-                echo '<a href="../../src/pages/registeringTraining.php" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Gerenciar ususarios</a>';
+                echo '<a href="../../src/pages/admTraining.php" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Adição de treinos</a>';
+                echo '<a href="../../src/pages/admUsers.php" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Gerenciar usuarios</a>';
                 echo '<a href="../../src/pages/contact.php" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contato</a>';
               } else if ($usuario['tipo_user'] == "aluno") {
                 echo '<a href="/index.php" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Pagina inicial</a>';
@@ -143,8 +143,8 @@ if (!isset($_SESSION['email'])) {
       if (isset($_SESSION['usuario'])) {
         if ($usuario['tipo_user'] == "personal") {
           echo '<a href="/index.php" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium">Pagina inicial</a>';
-          echo '<a href="../../src/pages/registeringTraining.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Adição de treinos</a>';
-          echo '<a href="../../src/src/pages/registeringTraining.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Gerenciar ususarios</a>';
+          echo '<a href="../../src/pages/admTraining.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Adição de treinos</a>';
+          echo '<a href="../../src/src/pages/admUsers.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Gerenciar usuarios</a>';
           echo '<a href="../../src/pages/contact.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contato</a>';
         } else if ($usuario['tipo_user'] == "aluno") {
           echo '<a href="/index.php" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium">Pagina inicial</a>';
