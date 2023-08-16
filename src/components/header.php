@@ -70,6 +70,8 @@ if (!isset($_SESSION['email'])) {
 
             ?>
 
+
+
           </div>
         </div>
       </div>
@@ -79,12 +81,19 @@ if (!isset($_SESSION['email'])) {
         if (isset($usuario)) {
           $teste = substr($usuario['nome'], 0, 1);
           echo '<div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">';
-          echo '<p class="text-bold text-white text-1xl ' . ($usuario['tipo_user'] == "aluno" ? 'aluno-style' : 'admin-style') . '">';
+          echo '<p class="hidden sm:block text-bold text-white text-1xl ' . ($usuario['tipo_user'] == "aluno" ? 'aluno-style' : 'admin-style') . '">';
           echo ($usuario['tipo_user'] == "aluno") ? 'Aluno: ' : 'Administrador: ';
           echo $usuario['nome'];
           echo ' ';
-          echo '<span class="inline-flex items-center justify-center h-[2.200rem] w-[2.200rem] rounded-full bg-orange-600">
-                    <span class="font-medium text-white leading-none">' . $teste . '</span>
+          echo '<span class=" inline-flex items-center justify-center h-[2.200rem] w-[2.200rem] rounded-full bg-orange-600">
+                    <span class=" hidden sm:block font-medium text-white leading-none">' . $teste . '</span>
+
+                    <div class="hidden sm:block absolute right-0 top-12 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                    <!-- Active: "bg-gray-100", Not Active: "" -->
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+                  </div>
                   </span>';
           echo '</p>';
           echo '</div>';
